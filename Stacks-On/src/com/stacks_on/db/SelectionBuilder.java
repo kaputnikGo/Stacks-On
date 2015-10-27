@@ -22,7 +22,7 @@ public class SelectionBuilder {
 	// reset builder is better than create new
 	public SelectionBuilder reset() {
 		mTable = null;
-		mSelection.setLength(0);;
+		mSelection.setLength(0);
 		mSelectionArgs.clear();
 		return this;
 	}

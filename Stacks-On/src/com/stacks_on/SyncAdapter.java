@@ -197,7 +197,7 @@ class SyncAdapter extends AbstractThreadedSyncAdapter {
 					.build());
 			syncResult.stats.numInserts++;
 		}
-		Log.i(TAG, "MErge solution ready, apply batch.");
+		Log.i(TAG, "Merge solution ready, apply batch.");
 		mContentResolver.applyBatch(FeedContract.CONTENT_AUTHORITY, batch);
 		mContentResolver.notifyChange(
 				FeedContract.Entry.CONTENT_URI,

@@ -6,7 +6,8 @@
           android:name="com.stacks_on.EntryListFragment"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:layout_marginLeft="16dp"
-          android:layout_marginRight="16dp"
+          android:layout_marginLeft="@dimen/list_margin"
+          android:layout_marginRight="@dimen/list_margin"
+          android:textSize="@dimen/list_title_size"
           tools:context="com.stacks_on.MainActivity"
           tools:layout="@android:layout/list_content" />

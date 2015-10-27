@@ -104,8 +104,8 @@ public class FeedParser {
 	
 	// process tag and get value
 	private String readTag(XmlPullParser parser, int tagType) throws IOException, XmlPullParserException {
-		String tag= null;
-		String endTag = null;
+		//String tag= null;
+		//String endTag = null;
 		
 		switch (tagType) {
 		case TAG_ID:
@@ -134,7 +134,7 @@ public class FeedParser {
 	private String readAlternateLink(XmlPullParser parser) throws IOException, XmlPullParserException {
 		String link = null;
 		parser.require(XmlPullParser.START_TAG,  ns, "link");
-		String tag = parser.getName();
+		//String tag = parser.getName();
 		String relType = parser.getAttributeValue(null, "rel");
 		if (relType.equals("alternate")) {
 			link = parser.getAttributeValue(null, "href");

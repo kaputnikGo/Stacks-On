@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.SyncStatusObserver;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -49,8 +50,8 @@ public class EntryListFragment extends ListFragment implements LoaderManager.Loa
 		FeedContract.Entry.COLUMN_NAME_PUBLISHED
 	};
 	//column indexes, cursor index is same as projection index
-	private static final int COLUMN_ID = 0;
-	private static final int COLUMN_TITLE = 1;
+	//private static final int COLUMN_ID = 0;
+	//private static final int COLUMN_TITLE = 1;
 	private static final int COLUMN_URL_STRING = 2;
 	private static final int COLUMN_PUBLISHED = 3;
 	//columns to read from cursor for listView
@@ -59,11 +60,11 @@ public class EntryListFragment extends ListFragment implements LoaderManager.Loa
 		FeedContract.Entry.COLUMN_NAME_PUBLISHED
 	};
 	// views list for cursor data
+	// change these to style
 	private static final int[] TO_FIELDS = new int[] {
 		android.R.id.text1,
 		android.R.id.text2
 	};
-	
 
 	public EntryListFragment() {
 		// default empty constructor, mandatory
@@ -104,10 +105,14 @@ public class EntryListFragment extends ListFragment implements LoaderManager.Loa
 					DateTimeFormatter formatter = DateTimeFormat.forPattern("d/MM/yyyy, h:mm");
 					DateTime datetime = new DateTime(cursor.getLong(i));
 					((TextView) view).setText(datetime.toString(formatter));
+					((TextView) view).setTextColor(Color.parseColor("#ff0000"));
+					((TextView) view).setTextSize(12);
 					return true;
 				}
 				else {
 					// let the simple cursor adapter handle it
+					((TextView) view).setTextColor(Color.parseColor("#0000ff"));
+					((TextView) view).setTextSize(14);
 					return false;
 				}
 			}
