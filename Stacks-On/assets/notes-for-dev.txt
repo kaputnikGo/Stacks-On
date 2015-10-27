@@ -1,0 +1,93 @@
+// opening atom feed head:
+<?xml version="1.0" encoding="UTF-8"?><feed
+  xmlns="http://www.w3.org/2005/Atom"
+  xmlns:thr="http://purl.org/syndication/thread/1.0"
+  xml:lang="en-US"
+  xml:base="http://dailyreview.com.au/wp-atom.php"
+   >
+	<title type="text">Daily Review: film, stage and music reviews, interviews and more</title>
+	<subtitle type="text"></subtitle>
+
+	<updated>2015-10-23T01:30:34Z</updated>
+
+	<link rel="alternate" type="text/html" href="http://dailyreview.com.au" />
+	<id>http://dailyreview.com.au/feed/atom</id>
+	<link rel="self" type="application/atom+xml" href="http://dailyreview.com.au/feed/atom" />
+
+	<generator uri="http://wordpress.org/" version="4.0.1">WordPress</generator>
+
+
+
+
+// content example from feed:
+
+<content type="html" xml:base="http://dailyreview.com.au/bridge-of-spies-review-spielbergs-glossy-cloak-and-dagger-storybook/31916"><![CDATA[<img width="300" height="193" src="http://dailyreview.com.au/wp-content/uploads/2015/10/bridgeweb.jpg" class="attachment-medium wp-post-image" alt="bridgeweb" style="display: block; margin-bottom: 5px; clear:both;" /><p>After directing a confederate of top hats in 2012’s Lincoln, Steven Spielberg segues from headwear to spy games in a new Cold War drama starring a trusty pair of hands: enduring all-American nice guy Tom Hanks.<span id="more-31916"></span></p>
+<p>Hanks is for the partial-to-period-drama auteur what Leonardo DiCaprio is to Martin Scorsese. Not just regular collaborator and reliable go-to guy, but an actor whose instincts to some extent reflect the filmmaker’s.</p>
+<p>DiCaprio likes to push his characters in, at times,  challenging moral directions, recently confronting audiences with a vile plantation owner in <em>Django Unchained</em> (2012) and a coke-snorting fiend in <em>The Wolf of Wall Street</em> (2013). The same can be said of Scorsese, who directed the latter &#8212; not the sort of film you’d expect from most 71-year-olds, and far from his first un-PC picture.</p>
+<p>When was the last time you saw a despicable Tom Hanks character or a Spielberg movie that challenged your moral fibre? That’s not a criticism of either, but it does say something of the synthesis that has developed between their art and their intentions.</p>
+<p>Both are in good form in <em>Bridge of Spies</em>, a true story-inspired late &#8217;50s-set cloak and dagger piece with a glossy high-end sheen. It&#8217;s international espionage and political horse trading by way of, well, Steven Spielberg.</p>
+<p>When we meet James Donovan (Hanks) he’s working in insurance law, though we hear whispers about a past as a hot-shot attorney. When a British national living in New York City is nabbed and accused by the FBI of serious espionage charges, the powers that be go to Donovan for what appears to be a dud gig.</p>
+<p>Everybody appears to have already decided the man, Willy Fisher (Mark Rylance), is spying for the Russians but authorities are determined to present the impression of a fair trial. When Donovan says he’s in insurance now, he’s told returning to harder stuff in the legal profession is “like riding a bike”.</p>
+<p>Hanks plays a highly principled character (not exactly against type). His  resolve is only strengthened by the cries of vested interests asking him to violate client attorney privilege and the crooked glances of strangers greasing him off on the train. When a CIA agent asks Donovan to cough up information, irrespective of process because “we don’t have a rule book here,” Donovan is quick to retort.</p>
+<p>We do have a rule book, he snaps, and it’s called the gosh darn constitution. You can’t hear the violin strings yet, but they’re in the mail. The first moments of swelling score matched to monologue actually involves quiet reflection from Fisher, who remains &#8212; a credit to everybody &#8212; a nuanced and curiously elusive figure.</p>
+<p>What initially appears to be a handsomely packaged court room drama replete with spit-polished dialogue and an obvious through line to contemporary issues goes somewhere more interesting; the case is used for character and plot development rather than an end in itself.</p>
+<p>Put that down to screenwriters Joel and Ethan Coen, working in consort with playwright Matt Charman. Subplots involving a US pilot (Francis Gary Powers) and an economics grad (Will Rogers) initially feel like mysterious add-ons but the story’s architecture comes together superbly.</p>
+<p><em>Bridge of Spies</em> is a Spielberg movie, so production values are top shelf with handsomely burnished images from long-time collaborator and two-time Oscar winner Janusz Kaminski. The director’s formal style rounds out the script’s pointier edges, and when it comes to moral patter the director can’t help himself.</p>
+<p>There’s no shaking the sense this is history via storybook. Still, it&#8217;s the equivalent of a bulky page turner: slightly overlong but consistently entertaining.</p>
+<p><iframe src="https://www.youtube.com/embed/mBBuzHrZBro?rel=0" width="620" height="349" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+]]></content>
+
+
+
+// complete entery example (between <entry> tags)
+
+	<entry>
+		<author>
+			<name>Minna Gilligan</name>
+					</author>
+		<title type="html"><![CDATA[Minna Gilligan: what to wear to Taylor Swift, Leonard Cohen and David Bowie]]></title>
+		<link rel="alternate" type="text/html" href="http://dailyreview.com.au/minna-gilligan-what-to-wear-to-taylor-swift-leonard-cohen-and-david-bowie/31883" />
+		<id>http://dailyreview.com.au/?p=31883</id>
+		<updated>2015-10-23T01:05:27Z</updated>
+		<published>2015-10-23T01:02:19Z</published>
+		<category scheme="http://dailyreview.com.au" term="News &amp; commentary" /><category scheme="http://dailyreview.com.au" term="Stage" /><category scheme="http://dailyreview.com.au" term="Visual Arts" />		<summary type="html"><![CDATA[<img width="300" height="193" src="http://dailyreview.com.au/wp-content/uploads/2015/10/minna-gilliganweb.jpg" class="attachment-medium wp-post-image" alt="minna-gilliganweb" style="display: block; margin-bottom: 5px; clear:both;" />The term &#8220;It Girl&#8221; is usually associated with beautiful, young, aristo-bohos living in London and caught by the paps effortlessly falling out of cabs outside clubs. But the internet has unleashed a new generation of multi-skilled &#8220;It Girls&#8221; whose interest in art, fashion, and music converges in their social media output.  One &#8220;It Girl&#8221; of the moment is Minna Gilligan, an artist [&#038;hellip]]></summary>
+		<content type="html" xml:base="http://dailyreview.com.au/minna-gilligan-what-to-wear-to-taylor-swift-leonard-cohen-and-david-bowie/31883"><![CDATA[<img width="300" height="193" src="http://dailyreview.com.au/wp-content/uploads/2015/10/minna-gilliganweb.jpg" class="attachment-medium wp-post-image" alt="minna-gilliganweb" style="display: block; margin-bottom: 5px; clear:both;" /><p>The term &#8220;It Girl&#8221; is usually associated with beautiful, young, aristo-bohos living in London and caught by the paps effortlessly falling out of cabs outside clubs. But the internet has unleashed a new generation of multi-skilled &#8220;It Girls&#8221; whose interest in art, fashion, and music converges in their social media output.  One &#8220;It Girl&#8221; of the moment is <a href="http://www.minnagilligan.com/">Minna Gilligan</a>, an artist represented by Melbourne gallery <a href="http://www.dainesinger.com/minna-gilligan/">Daine Singer</a> who also writes for the famed New York fashion blog <a href="http://www.rookiemag.com/author/minnagill/">Rookie</a> and has just had a book of her musings called <a href="http://www.hardiegrant.co.uk/books/time-after-time"><em>Time After Time</em> </a>published by Hardie Grant where her photo appears on almost every page.</p>
+<p><em>Daily Review</em> asked Ms Gilligan to turn her eye and her wardrobe to the arts by asking her to choose what she&#8217;d wear when she chooses to step out. <span id="more-31883"></span></p>
+<p>&nbsp;</p>
+<p><a href="http://dailyreview.com.au/wp-content/uploads/2015/10/Leonard-Cohenweb.jpg" rel='prettyPhoto'><img class="aligncenter wp-image-31908" src="http://dailyreview.com.au/wp-content/uploads/2015/10/Leonard-Cohenweb.jpg" alt="Leonard-Cohenweb" width="500" height="500" /></a></p>
+<p><a href="http://www.leonardcohen.com/tour/events"><strong>A Leonard Cohen Concert</strong></a></p>
+<p>I love Leonard Cohen immensely. I have a large poster of him that looks down on me from the highest point of my bedroom wall. To a concert of his, I would want to dress somewhat like a beatnik with something as stereotypical as a black beret and turtleneck. I imagine it would be winter, as it is in most of his lyrical assertions, so I would also wear this amazing Japanese 1960s faux fur coat of mine to keep out that icy, possibly New York wind.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://dailyreview.com.au/wp-content/uploads/2015/10/Taylor-Swiftweb.jpg" rel='prettyPhoto'><img class="aligncenter wp-image-31902" src="http://dailyreview.com.au/wp-content/uploads/2015/10/Taylor-Swiftweb.jpg" alt="Taylor-Swiftweb" width="500" height="500" /></a></p>
+<p><strong>A Taylor Swift Concert</strong></p>
+<p>In somewhat stark contrast to Leonard Cohen, to a <a href="http://www.frontiertouring.com/taylorswift">Taylor Swift concert</a> I would go all out with glitz. While I wouldn’t exactly wear or carry the disco ball pictured, I would be pretty heavily into some metallic eye shadow and some sort of lurex bodysuit, perhaps. These metallic pink Gorman shoes are perfect for the occasion, and I’d probably bring along with me my daggy Lolita-esque loveheart sunglasses for fun. I like how Taylor Swift doesn’t take herself too seriously, and a concert of hers wouldn’t be the occasion to do so.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://dailyreview.com.au/wp-content/uploads/2015/10/David-webBowie-Minna.jpg" rel='prettyPhoto'><img class="aligncenter wp-image-31909" src="http://dailyreview.com.au/wp-content/uploads/2015/10/David-webBowie-Minna.jpg" alt="David-webBowie-Minna" width="500" height="500" /></a></p>
+<p><strong>David Bowie Is exhibition</strong></p>
+<p>I actually did attend the <a href="https://www.acmi.net.au/exhibitions/bowie/"><em>David Bowie Is</em></a> exhibition, and I actually did wear this incredible silver, gold and black Miu Miu leather jacket. I bought this jacket for a small fortune second hand on Ebay, an action which I harbor absolutely no regrets. It’s surprisingly versatile, and has enough of the Ziggy Stardust magic in the starburst decals to last a lifetime. It’s wild and unapologetic and yet somewhat sophisticated at the same time, not unlike Bowie himself.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://dailyreview.com.au/wp-content/uploads/2015/10/Surrealismweb-Exhibtion.jpg" rel='prettyPhoto'><img class="aligncenter wp-image-31910" src="http://dailyreview.com.au/wp-content/uploads/2015/10/Surrealismweb-Exhibtion.jpg" alt="Surrealismweb-Exhibtion" width="500" height="500" /></a></p>
+<p><strong>The Surrealism Exhibition &#8220;Lurid Beauty&#8217; at the National Gallery of Victoria</strong></p>
+<p>To <em><a href="http://www.ngv.vic.gov.au/exhibition/lurid-beauty/">Lurid Beauty</a></em> I would wear this Opening Ceremony dress from their (posthumous) collaboration with the Belgian surrealist artist René Magritte. I love Magritte’s work. His imagery over time has been so saturated, and yet it still has presence and impact upon me as a viewer.</p>
+<p>This dress is stupidly perfect to wear to a surrealist exhibition, so much so that I could probably stand against a wall wearing it and be considered part of the show. It would also be brilliant to have to have an ant eater on a lead – a la Salvador Dali, but I’ll take things one step at a time…</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://dailyreview.com.au/wp-content/uploads/2015/10/Theweb-State-Library-Readin.jpg" rel='prettyPhoto'><img class="aligncenter wp-image-31912" src="http://dailyreview.com.au/wp-content/uploads/2015/10/Theweb-State-Library-Readin.jpg" alt="Theweb-State-Library-Readin" width="500" height="500" /></a></p>
+<p><a href="http://www.slv.vic.gov.au/"><strong>The State Library</strong></a></p>
+<p>I feel like libraries call for an outfit with a vague reference to some sort of 1960&#8217;s French version of Marcia Brady. Accessories should be minimal and matching, largely in primary colours. Mini skirts and Mary-Jane shoes work well as you sashay across the floorboards, block heels clipping in time with your step. The sound they make feels all too mature for you, but you can’t help but enjoy the presence and power it wields.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://dailyreview.com.au/wp-content/uploads/2015/10/The-Circusweb.jpg" rel='prettyPhoto'><img class="aligncenter wp-image-31911" src="http://dailyreview.com.au/wp-content/uploads/2015/10/The-Circusweb.jpg" alt="The-Circusweb" width="500" height="500" /></a></p>
+<p><strong>The Circus</strong></p>
+<p>I want to state that I wouldn’t attend a circus with animals incorporated into their acts, so this circus attendance would have to be purely a performative acrobatic type circus, with human performers. That said, I greatly appreciate the aesthetic of the carnival, with exaggerated sounds, gestures and aesthetics.</p>
+<p>I dug this Romance Was Born dress out of my wardrobe because I knew it was perfect for this imagined occasion. The Peter-pan collar is amplified and frames my neck not unlike a Victorian neck ruff, the pattern repeats and spins like the mirrored walls of a traditional fun house. If given the financial choice, I would also incorporate a coat or jacket by Vivienne Westwood to create a more angular silhouette that is highlighted by the spotlight of the stage behind.</p>
+<p>&nbsp;</p>
+<p><a href="http://dailyreview.com.au/wp-content/uploads/2015/10/mincoverweb.jpg" rel='prettyPhoto'><img class="aligncenter wp-image-31975" src="http://dailyreview.com.au/wp-content/uploads/2015/10/mincoverweb.jpg" alt="mincoverweb" width="400" height="480" /></a></p>
+]]></content>
+			<link rel="replies" type="text/html" href="http://dailyreview.com.au/minna-gilligan-what-to-wear-to-taylor-swift-leonard-cohen-and-david-bowie/31883#comments" thr:count="0"/>
+		<link rel="replies" type="application/atom+xml" href="http://dailyreview.com.au/minna-gilligan-what-to-wear-to-taylor-swift-leonard-cohen-and-david-bowie/31883/feed/atom" thr:count="0"/>
+		<thr:total>0</thr:total>
+	</entry>

@@ -1,0 +1,38 @@
+/*
+
+Name: page-style-01.css
+Version: 0.1 (testing prototype)
+
+Purpose: custom overrides and styling for jsoup loaded webpages
+Key Concepts: made for tablet and mobile, responsive, isolate links, make for touch	
+- intended for article page	only		
+
+*/
+html {
+	
+}
+body {
+	
+}
+p {
+	font-family: Georgia, serif;
+	width: 80%;
+	margin: 24px 10%;
+}
+a {
+	display: block;
+	border: 2px solid blue;
+	border-radius: 5px;
+	width: 70%;
+	text-align: center;
+	padding: 6px;
+	margin: 12px auto;
+	background-color: #cccccc;
+}
+img{
+	display: block;
+	width: 120px;
+	height: auto;
+	padding: 24px 0;
+	margin: 24px auto;
+}
