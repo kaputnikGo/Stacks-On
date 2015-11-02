@@ -49,7 +49,7 @@ public class SyncUtils {
 	public static void TriggerRefresh() {
 		Bundle b = new Bundle();
 		// disable some default settings to allow immediate sync
-		b.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
+		b.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, false);
 		b.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
 		ContentResolver.requestSync(
 				GenericAccountService.GetAccount(ACCOUNT_TYPE),

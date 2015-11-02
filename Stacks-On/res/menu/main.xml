@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_refresh"
+<menu xmlns:android="http://schemas.android.com/apk/res/android">    
+    
+   <item android:id="@+id/down_stack"
+          android:icon="@drawable/ic_undo_white_24dp"
+          android:title="@string/down_stack"
+          android:orderInCategory="1"
+          android:showAsAction="always" /> 
+   
+   <item android:id="@+id/up_stack"
+          android:icon="@drawable/ic_redo_white_24dp"
+          android:title="@string/up_stack"
+          android:orderInCategory="2"
+          android:showAsAction="always" />     
+    
+   <item android:id="@+id/menu_refresh"
           android:icon="@drawable/ic_action_refresh"
           android:title="@string/description_refresh"
-          android:orderInCategory="1"
-          android:showAsAction="always" />
+          android:orderInCategory="3"
+          android:showAsAction="always" />     
+          
+   <item android:id="@+id/action_settings"
+        android:icon="@drawable/ic_settings_white_24dp"
+        android:title="@string/settings_button"
+        android:orderInCategory="4" 
+        android:showAsAction="never" /> 
+    
 </menu>

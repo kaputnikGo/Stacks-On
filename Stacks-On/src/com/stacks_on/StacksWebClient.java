@@ -1,19 +1,19 @@
 package com.stacks_on;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class StacksWebClient  extends WebViewClient {
-	//possibly not needing this...
-	private Activity activity = null;
 	private View view;
+	private static final String TAG = "StacksWebClient";
 	
-	public StacksWebClient(Activity activity) {
-		this.activity = activity;
+	public StacksWebClient() {
+		// 
 	}
 	
 	@Override
@@ -26,6 +26,17 @@ public class StacksWebClient  extends WebViewClient {
 		view.getContext().startActivity(intent);
 		this.view = view;
 		return true;
+	}
+	
+	// or add this: webView.setOnTouchListener(new View.OnTouchListener() {
+	// 		@Override onTouch method then goes here...
+	// }
+	// as per: http://stackoverflow.com/questions/5116909/how-i-can-get-onclick-event-on-webview-in-android
+	
+	public boolean onTouch(View view, MotionEvent event) {
+		Log.e(TAG, "touch the webview");
+		
+		return false;
 	}
 	
 	public void scrollView(int direction) {

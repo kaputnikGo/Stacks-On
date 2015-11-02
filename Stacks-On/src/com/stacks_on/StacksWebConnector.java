@@ -15,6 +15,8 @@ public class StacksWebConnector extends AsyncTask<Void, Void, Void> {
 	private String urlString;
 	private Document doc;
 	
+	private static final int CONNECTION_TIMEOUT = 15000; //15 secs, bit long...?
+	
 	private static final String TAG = "StacksWebConnector";
 
 	public StacksWebConnector(MainActivity mainActivity, String urlString) {
@@ -34,9 +36,12 @@ public class StacksWebConnector extends AsyncTask<Void, Void, Void> {
 			int status = getWebsiteStatus(urlString);
 			
 			if (websiteStatusProceed(status)) {
-				doc = Jsoup.connect(urlString).get();
+				// timeout, default = 3 secs (in ms)
+				doc = Jsoup.connect(urlString).timeout(CONNECTION_TIMEOUT).get();
 			}
 			else {
+				// based upon status code error, present a helpful internal page
+				doc.html("<html><head></head><body><br /><br /><strong>Encountered a connection error, status code: " + status + "</strong></body></html>");
 				Log.e(TAG, "Error, website status: " + status);
 			}
 		}
@@ -53,14 +58,17 @@ public class StacksWebConnector extends AsyncTask<Void, Void, Void> {
 	
 	private int getWebsiteStatus(final String candidate) {
 		// return a website status code based upon candidate string for url
-		Connection.Response response = null;	
+		Connection.Response response = null;
+		int code = 0;
 		try {
-			response = Jsoup.connect(candidate).execute();
-			return response.statusCode();
+			// timeout, default = 3 secs (in ms)
+			response = Jsoup.connect(candidate).timeout(CONNECTION_TIMEOUT).execute();
+			code = response.statusCode();
+			return code;
 		}
 		catch (IOException ex) {
-			Log.e(TAG, "GetWebsiteStatus connection error: " + ex);
-			return 0;
+			Log.e(TAG, "GetWebsiteStatus connection error: " + ex); 
+			return code;
 		}
 	}
 	

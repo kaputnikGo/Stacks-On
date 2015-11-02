@@ -67,7 +67,7 @@ public class EntryListFragment extends ListFragment implements LoaderManager.Loa
 	};
 
 	public EntryListFragment() {
-		// default empty constructor, mandatory
+		// default empty constructor
 	}
 	
 	@Override
@@ -127,7 +127,7 @@ public class EntryListFragment extends ListFragment implements LoaderManager.Loa
 		super.onResume();
 		mSyncStatusObserver.onStatusChanged(0);
 		// look for state changes
-		final int mask = ContentResolver.SYNC_OBSERVER_TYPE_PENDING | ContentResolver.SYNC_OBSERVER_TYPE_ACTIVE;
+		final int mask = ContentResolver.SYNC_OBSERVER_TYPE_PENDING | ContentResolver.SYNC_OBSERVER_TYPE_ACTIVE; 
 		mSyncObserverHandle = ContentResolver.addStatusChangeListener(mask, mSyncStatusObserver);
 	}
 	
@@ -180,6 +180,15 @@ public class EntryListFragment extends ListFragment implements LoaderManager.Loa
 			case R.id.menu_refresh:
 				SyncUtils.TriggerRefresh();
 				return true;
+			case R.id.down_stack:
+				((MainActivity)getActivity()).downStacksRequest();
+				return true;
+			case R.id.up_stack:
+				((MainActivity)getActivity()).upStacksRequest();
+				return true;
+			case R.id.action_settings:
+				((MainActivity)getActivity()).settingsRequest();
+				return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -200,9 +209,10 @@ public class EntryListFragment extends ListFragment implements LoaderManager.Loa
 		((MainActivity)getActivity()).loadSelectedArticle(articleUrlString);
 	}
 	
-	// set the state of the refersh button
+	// set the state of the refresh button
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public void setRefreshActionButtonState(boolean refreshing) {
+		Log.e(TAG, "refreshing: " + refreshing);
 		if (mOptionsMenu == null || Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
 			return;
 		}
@@ -232,12 +242,18 @@ public class EntryListFragment extends ListFragment implements LoaderManager.Loa
 						setRefreshActionButtonState(false);
 						return;
 					}
+					Log.d(TAG, "run...");
 					// test some things
 					boolean syncActive = ContentResolver.isSyncActive(
 							account, FeedContract.CONTENT_AUTHORITY);
-					boolean syncPending = ContentResolver.isSyncPending(
-							account, FeedContract.CONTENT_AUTHORITY);
-					setRefreshActionButtonState(syncActive || syncPending);
+					if (syncActive) {
+						setRefreshActionButtonState(true);
+					}
+					else {
+						setRefreshActionButtonState(false);
+					}
+					
+					
 				}
 			});
 		}

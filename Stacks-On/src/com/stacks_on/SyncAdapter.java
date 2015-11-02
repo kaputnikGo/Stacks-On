@@ -122,7 +122,8 @@ class SyncAdapter extends AbstractThreadedSyncAdapter {
 	
 	// read XML from input stream, check for existing, merge via batch
 	public void updateLocalFeedData(final InputStream stream, final SyncResult syncResult)
-		throws IOException, XmlPullParserException, RemoteException, OperationApplicationException, ParseException {
+			throws IOException, XmlPullParserException, RemoteException, 
+			OperationApplicationException, ParseException {
 		final FeedParser feedParser = new FeedParser();
 		final ContentResolver contentResolver = getContext().getContentResolver();
 		Log.i(TAG, "Parsing stream as Atom feed.");

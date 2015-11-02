@@ -12,12 +12,13 @@ html {
 	
 }
 body {
-	
+	width: 80%;
+  	margin: 0 auto;
 }
 p {
 	font-family: Georgia, serif;
-	width: 80%;
-	margin: 24px 10%;
+	width: 94%;
+	margin: 12px 10%;
 }
 a {
 	display: block;
@@ -34,5 +35,13 @@ img{
 	width: 120px;
 	height: auto;
 	padding: 24px 0;
-	margin: 24px auto;
+	margin: 12px auto;
+}
+iframe {
+	width: 90%;
+	height: auto;
+	margin: 0 auto;
+	border: 2px solid blue;
+	border-radius: 5px;
+	padding: 4px;
 }
