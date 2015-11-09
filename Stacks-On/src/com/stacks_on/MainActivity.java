@@ -13,11 +13,13 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements OnTouchListener {
 
 	private WebView webView;
 	private AssetManager assetManager;
@@ -33,6 +35,8 @@ public class MainActivity extends FragmentActivity {
 	 * 
 	 */
 	// display a complete entry, not saving in db, via the StacksWebClient - don't load the article url
+	// is possible to get the whole article content from the atom page under <content> tags - and avoid loading the webpage
+	// maybe a secondary call to the atom? to get just the content?
 	
 	// can get a link for an iframe if javascript is off (link has domain name as indicator)
 	
@@ -60,6 +64,7 @@ public class MainActivity extends FragmentActivity {
 		setContentView(R.layout.activity_main);
 		urlSelectorString = "not set";
 	}
+	
 	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -102,6 +107,9 @@ public class MainActivity extends FragmentActivity {
 		Log.d(TAG, "Back button pressed");
 		if (webView.canGoBack()) {
 			webView.goBack();
+		}
+		else {
+			//setContentView(R.layout.activity_main);
 		}
 	}
 	
@@ -148,7 +156,7 @@ public class MainActivity extends FragmentActivity {
 		else {
 			// assign to accessible string
 			urlSelectorString = articleUrlString;
-			
+
 			setContentView(R.layout.web_view_layout);
 			webView = (WebView) findViewById(R.id.webview);
 			
@@ -157,6 +165,7 @@ public class MainActivity extends FragmentActivity {
 				
 			StacksWebClient stacksWebClient = new StacksWebClient();
 			webView.setWebViewClient(stacksWebClient);
+			webView.setOnTouchListener(this);
 			
 			Log.d(TAG, "loading async via jsoup...");
 			if (networkConnectionPresent()) {
@@ -234,6 +243,45 @@ public class MainActivity extends FragmentActivity {
 		return null;
 	}
 	
+	@Override
+	public boolean onTouch(View view, MotionEvent event) {
+		final int RELEASED = 0;
+		final int TOUCHED = 1;
+		final int DRAGGING = 2;
+		final int UNDEFINED = 3;
+		int touchState = RELEASED;
+		switch (event.getAction()) {
+			case MotionEvent.ACTION_DOWN:
+				if (touchState == RELEASED)
+					touchState = TOUCHED;
+				else
+					touchState = UNDEFINED;
+				break;
+			case MotionEvent.ACTION_UP:
+				if (touchState != DRAGGING) {
+					touchState = RELEASED;
+					view.performClick();
+					// respond with getting link url and load
+					// need to get clicked url, from jsoup?
+					Log.d(TAG, "clickety-click here.");
+				}
+				else if (touchState == DRAGGING)
+					touchState = RELEASED;
+				else
+					touchState = UNDEFINED;
+				break;
+			case MotionEvent.ACTION_MOVE:
+				if (touchState == TOUCHED || touchState == DRAGGING)
+					touchState = DRAGGING;
+				else
+					touchState = UNDEFINED;
+				break;
+			default:
+					touchState = UNDEFINED;
+		}
+		return false;
+	}
+	
 	
 /************************************************************
 * 
@@ -246,12 +294,13 @@ public class MainActivity extends FragmentActivity {
 	}
 	
 	
-	protected boolean networkConnectionPresent() {
+	public boolean networkConnectionPresent() {
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
-	}	
+	}
+
 	
 	/*
 	private String getAssetsFile(String filename) {

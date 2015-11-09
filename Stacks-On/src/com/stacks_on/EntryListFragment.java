@@ -105,7 +105,7 @@ public class EntryListFragment extends ListFragment implements LoaderManager.Loa
 					DateTimeFormatter formatter = DateTimeFormat.forPattern("d/MM/yyyy, h:mm");
 					DateTime datetime = new DateTime(cursor.getLong(i));
 					((TextView) view).setText(datetime.toString(formatter));
-					((TextView) view).setTextColor(Color.parseColor("#ff0000"));
+					((TextView) view).setTextColor(Color.parseColor("#000000"));
 					((TextView) view).setTextSize(12);
 					return true;
 				}
@@ -212,7 +212,6 @@ public class EntryListFragment extends ListFragment implements LoaderManager.Loa
 	// set the state of the refresh button
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public void setRefreshActionButtonState(boolean refreshing) {
-		Log.e(TAG, "refreshing: " + refreshing);
 		if (mOptionsMenu == null || Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
 			return;
 		}
@@ -242,7 +241,6 @@ public class EntryListFragment extends ListFragment implements LoaderManager.Loa
 						setRefreshActionButtonState(false);
 						return;
 					}
-					Log.d(TAG, "run...");
 					// test some things
 					boolean syncActive = ContentResolver.isSyncActive(
 							account, FeedContract.CONTENT_AUTHORITY);

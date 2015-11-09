@@ -20,12 +20,24 @@ public class StacksWebClient  extends WebViewClient {
 	public boolean shouldOverrideUrlLoading(WebView view, String url) {
 		// only this domain opens with the StacksWebClient
 		if(Uri.parse(url).getHost().equals("dailyreview.com.au")) {
+			// true to catch when url about to load
 			return false;
 		}
+		// experiment with always using our client		
+		return true;
+		
+		/*
 		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 		view.getContext().startActivity(intent);
 		this.view = view;
 		return true;
+		*/
+	}
+	
+	@Override
+	public void onLoadResource(WebView webView, String url) {
+		Log.d(TAG, "load url: " + url);
+		
 	}
 	
 	// or add this: webView.setOnTouchListener(new View.OnTouchListener() {
