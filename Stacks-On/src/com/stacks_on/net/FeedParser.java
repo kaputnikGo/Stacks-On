@@ -78,8 +78,10 @@ public class FeedParser {
 			}
 			else if (name.equals("title")) {
 				// Example: <title>Article title</title>
-				// use jsoup for entities
+				// render any xml entities
 				title = Jsoup.parse(readTag(parser, TAG_TITLE)).select("body").html();
+				title = renderXmlEntities(title);
+				
 			}
 			else if (name.equals("link")) {
 				// Example: <link rel="alternate" type="text/html" href="http://example.com/article/1234"/>
@@ -173,6 +175,17 @@ public class FeedParser {
 					break;
 			}
 		}
+	}
+	
+	// render the xml entities, if any
+	private String renderXmlEntities(String original) {
+		original = original.replace("&amp;", "&");
+		original = original.replace("&quot;", "\"");
+		original = original.replace("&apos;", "'");
+		original = original.replace("&lt;", "<");
+		original = original.replace("&rt;", ">");
+		return original;
+		
 	}
 	
 	// Entry class for single entry(post) in feed

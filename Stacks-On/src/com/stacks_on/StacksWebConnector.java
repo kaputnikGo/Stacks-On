@@ -10,24 +10,28 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 public class StacksWebConnector extends AsyncTask<Void, Void, Void> {
-	//TODO - this prob not best way, MainActivity...
-	private MainActivity mainActivity;
+	private StacksWebClient stacksWebClient;
 	private String urlString;
 	private Document doc;
 	
 	private static final int CONNECTION_TIMEOUT = 15000; //15 secs, bit long...?
+	private static final String USER_AGENT = "Mozilla/5.0 (jsoup)";
 	
 	private static final String TAG = "StacksWebConnector";
 
-	public StacksWebConnector(MainActivity mainActivity, String urlString) {
-		this.mainActivity = mainActivity;
+	public StacksWebConnector(StacksWebClient stacksWebClient, String urlString) {
+		this.stacksWebClient = stacksWebClient;
 		this.urlString = urlString;
 	}
 	
+	public void setUrlString(String urlString) {
+		this.urlString = urlString;
+	}	
 
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
+		Log.d(TAG, "pre execute.");
 	}
 	
 	@Override
@@ -37,7 +41,8 @@ public class StacksWebConnector extends AsyncTask<Void, Void, Void> {
 			
 			if (websiteStatusProceed(status)) {
 				// timeout, default = 3 secs (in ms)
-				doc = Jsoup.connect(urlString).timeout(CONNECTION_TIMEOUT).get();
+				doc = Jsoup.connect(urlString).userAgent(USER_AGENT).timeout(CONNECTION_TIMEOUT).get();
+				Log.d(TAG, "jsoup get doc.");				
 			}
 			else {
 				// based upon status code error, present a helpful internal page
@@ -53,7 +58,7 @@ public class StacksWebConnector extends AsyncTask<Void, Void, Void> {
 	
 	@Override
 	protected void onPostExecute(Void result) {
-		mainActivity.parseRequestedHtml(doc);
+		stacksWebClient.processJsoupDoc(doc);
 	}
 	
 	private int getWebsiteStatus(final String candidate) {

@@ -1,9 +1,5 @@
 package com.stacks_on;
 
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -13,20 +9,15 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-public class MainActivity extends FragmentActivity implements OnTouchListener {
+public class MainActivity extends FragmentActivity {
 
 	private WebView webView;
 	private AssetManager assetManager;
 	private String urlSelectorString;
 	private boolean JAVASCRIPT_ALLOW = false;
-	private static final String MIMETYPE = "text/html; charset=utf-8";
-	private static final String STYLES_FOLDER = "styles/";
 	
 	private static final String TAG = "MainActivity";
 	/*
@@ -43,7 +34,7 @@ public class MainActivity extends FragmentActivity implements OnTouchListener {
 	// need to be able to back button to activity_main.xml view, we do have an actionbar...
 	// i hate android
 	
-	// xml type entity &amp; is not rendered
+	// xml type entity &amp; is not rendered - fixed with private method to render the 5 xml entities
 	
 	// net connect errors/status codes returned need an internal app solution to present to user, such as for 404, 500, 
 	
@@ -163,125 +154,19 @@ public class MainActivity extends FragmentActivity implements OnTouchListener {
 			WebSettings webSettings = webView.getSettings();			
 			webSettings.setJavaScriptEnabled(JAVASCRIPT_ALLOW);
 				
-			StacksWebClient stacksWebClient = new StacksWebClient();
+			StacksWebClient stacksWebClient = new StacksWebClient(assetManager, webView);			
 			webView.setWebViewClient(stacksWebClient);
-			webView.setOnTouchListener(this);
 			
 			Log.d(TAG, "loading async via jsoup...");
-			if (networkConnectionPresent()) {
-				StacksWebConnector stacksWebConnector = new StacksWebConnector(this, urlSelectorString);		
-				stacksWebConnector.execute();
+			if (networkConnectionPresent()) {	
+				//stacksWebClient.stacksConnectExecute(urlSelectorString);
+				stacksWebClient.initialRequest(urlSelectorString);
 			}
 			else {
 				Log.e(TAG, "No network connection found.");
 			}
 		}
 	}
-	
-	public void parseRequestedHtml(Document doc) {
-		// get jsoup to do some pruning here, article content, links and image(s) only
-		Log.d(TAG,"parseRequestedHtml...");	
-		Elements entryContent = null;
-	
-		if (doc != null) {			
-			entryContent = doc.select("div.entry > p");
-			if (entryContent.size() > 0 ) {
-				entryContent = makeNiceContent(entryContent);
-				webView.loadData(entryContent.html(), MIMETYPE, null);
-				//System.out.println("Debug html: \n" + entryContent.html());
-			}
-			else {
-				// connection but page returned has length of 0
-				webView.loadData("Page is empty, entryContent is zero.", MIMETYPE, null);
-			}
-		}
-		else {
-			webView.loadData("doc is null.", MIMETYPE, null);
-		}		
-	}
-	
-	private Elements makeNiceContent(Elements elements) {
-		Log.d(TAG, "makeNiceContent.");
-		if (elements != null) {
-			// add style sheet first
-			elements = makeNiceHeader(elements);
-			if (JAVASCRIPT_ALLOW == false) {
-				// replace with the source link in case user wants to go there
-				String source = "";
-				String domain = "";
-
-				int counter = 1; // for multiples
-				for (Element elem : elements) {
-					Log.d(TAG, "look for iframe...");
-					source = elem.getElementsByTag("iframe").attr("src");
-					domain = Utilities.getDomainFromUrl(source);					
-					if (source.length() > 0) {
-						Log.d(TAG, "found: " + source);
-						elem.html("<a href=\'" + source + "\'> "+ domain + " link " + counter + "</a>");						
-						source = "";
-						domain = "";
-						counter++;
-					}
-				}
-			}			
-			return elements;
-		}
-		return null;
-	}
-	
-	private Elements makeNiceHeader(Elements elements) {
-		Log.d(TAG, "makeNiceHeader.");
-		if (elements != null) {
-			// load page-style-01.css from Assets folder		
-			elements.first().prepend("\n<style type=\"text/css\">" + 
-					Utilities.getAssetsFileContent(assetManager, STYLES_FOLDER + "page-style-01.css") + "</style>\n");
-			
-			// since wp adds new lines for every <p> tag, we need to provide the same
-			elements.append("<br /><br />");
-			return elements;
-		}
-		return null;
-	}
-	
-	@Override
-	public boolean onTouch(View view, MotionEvent event) {
-		final int RELEASED = 0;
-		final int TOUCHED = 1;
-		final int DRAGGING = 2;
-		final int UNDEFINED = 3;
-		int touchState = RELEASED;
-		switch (event.getAction()) {
-			case MotionEvent.ACTION_DOWN:
-				if (touchState == RELEASED)
-					touchState = TOUCHED;
-				else
-					touchState = UNDEFINED;
-				break;
-			case MotionEvent.ACTION_UP:
-				if (touchState != DRAGGING) {
-					touchState = RELEASED;
-					view.performClick();
-					// respond with getting link url and load
-					// need to get clicked url, from jsoup?
-					Log.d(TAG, "clickety-click here.");
-				}
-				else if (touchState == DRAGGING)
-					touchState = RELEASED;
-				else
-					touchState = UNDEFINED;
-				break;
-			case MotionEvent.ACTION_MOVE:
-				if (touchState == TOUCHED || touchState == DRAGGING)
-					touchState = DRAGGING;
-				else
-					touchState = UNDEFINED;
-				break;
-			default:
-					touchState = UNDEFINED;
-		}
-		return false;
-	}
-	
 	
 /************************************************************
 * 
